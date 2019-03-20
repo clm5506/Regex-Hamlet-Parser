@@ -51,14 +51,24 @@ public class HamletParser {
         String hamletRegex = "Horatio";
         Pattern pattern = Pattern.compile(hamletRegex, Pattern.CASE_INSENSITIVE);
         Matcher m = pattern.matcher(horatio);
-        horatio = m.replaceAll("Tarik");
+        horatio = m.replaceAll("Tariq");
         return horatio;
     }
 
-    public boolean find(String str){
-        Pattern pattern = Pattern.compile(str, Pattern.CASE_INSENSITIVE);
-        Matcher m = pattern.matcher(str);
-        boolean b = m.matches();
+    public boolean findHoratio(String stringToCheck){
+        String regex = "Horatio";
+        Pattern pattern = Pattern.compile(regex);//, Pattern.CASE_INSENSITIVE);
+        Matcher m = pattern.matcher(stringToCheck);
+        boolean b = m.lookingAt();
         return b;
     }
+
+    public boolean findHamlet(String stringToCheck){
+        String regex = "Hamlet";
+        Pattern pattern = Pattern.compile(regex);//, Pattern.CASE_INSENSITIVE);
+        Matcher m = pattern.matcher(stringToCheck);
+        boolean b = m.lookingAt();
+        return b;
+    }
+
 }

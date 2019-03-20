@@ -15,6 +15,19 @@ public class HamletParserTest {
     }
 
     @Test
+    public void testText(){
+
+        //Given
+        String byeHamlet = hamletParser.replaceEveryInstanceOfHamletWithLeon(hamletText);
+        String actual = hamletParser.replaceEveryInstanceOfHoratioWithTarik(byeHamlet);
+        //When//Then
+        Assert.assertFalse(actual.contains("Horatio"));
+        Assert.assertFalse(actual.contains("Hamlet"));
+
+    }
+
+
+    @Test
     public void testChangeHamletToLeon() {
         //Given
         String before = "ssssHamletssss";
@@ -32,7 +45,7 @@ public class HamletParserTest {
     public void testChangeHoratioToTariq() {
         //Given
         String before = "ssssHoratiossss";
-        String expected = "ssssTarikssss";
+        String expected = "ssssTariqssss";
 
         //When
         String actual = hamletParser.replaceEveryInstanceOfHoratioWithTarik(before);
@@ -45,11 +58,10 @@ public class HamletParserTest {
     @Test
     public void testFindHoratio() {
         //Given
-        String before = "ssssHoratiossssHoratio";
-        String expected = "ssssTarikssssTarik";
+        String before = "HoratiossssHoratio";
 
         //When
-        boolean actual = hamletParser.find(before);
+        boolean actual = hamletParser.findHoratio(before);
 
         //Then
         Assert.assertTrue(actual);
@@ -59,14 +71,13 @@ public class HamletParserTest {
     public void testFindHamlet() {
 
         //Given
-        String before = "ssssHamletssssHamlet";
-        String expected = "ssssLeonssssLeon";
+        String before = "HamletssssHamlet";
 
-        //When
-        boolean actual = hamletParser.find(before);
+       // When
+        boolean actual = hamletParser.findHamlet(before);
 
-        //Then
+        // Then
         Assert.assertTrue(actual);
     }
-    
+
 }
